@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url(background.PNG);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      h2 {
+        color: white;
+        font-size: 30px;
+      }
+      form {
+        display: block;
+        text-align: center;
+        justify-content: center;
+        padding: 15px;
+        background-image: linear-gradient(
+          rgba(58, 31, 126, 0.75),
+          rgba(189, 197, 235, 0.75)
+        );
+      }
+      #form {
+        width: 650px;
+        height: 710px;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-top: 10px;
+        font-weight: bolder;
+        color: white;
+        font-size: 20px;
+        font-family: sans-serif;
+      }
+      input {
+        width: 90%;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #131313;
+        border-radius: 15px;
+      }
+      button {
+        width: 200px;
+        height: 50px;
+        font-size: 21px;
+        border: 1px solid black;
+        border-radius: 20px;
+        background-color: rgba(128, 128, 128, 0.692);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div id="form">
+        <h1></h1>
+        <form id="form" onsubmit=" return validation()">
+          <h2>LOGIN</h2>
+          <!-- name -->
+          <label for="name">NAME</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter the name "
+            required
+          /><br /><br />
+          <!-- username -->
+          <label for="username">USER NAME</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter the username "
+            required
+          /><br /><br />
+          <!-- email -->
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter the email "
+            required
+          /><br /><br />
+          <!-- NUMBER -->
+          <label for="number">MOBILE NUMBER</label>
+          <input
+            type="number"
+            id="number"
+            placeholder="Enter the mobile number "
+            required
+          /><br /><br />
+          <!-- password -->
+          <label for="password">PASSWORD</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter the password "
+            required
+          /><br /><br />
+          <!-- CONFIRM PASSWORD -->
+          <label for="confirmpassword">CONFIRM PASSWORD</label>
+          <input
+            type="password"
+            id="confirmpassword"
+            placeholder="Confirm Password"
+            required
+          /><br /><br />
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <script>
+        function validation() {
+          // Get form values
+          const name = document.getElementById("name").value;
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const number = document.getElementById("number").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmpassword").value;
+
+          // Name and username validation (only characters)
+          const charRegex = /^[A-Za-z]+$/;
+          if (!charRegex.test(name)) {
+            alert("Name should contain only characters.");
+            return false;
+          }
+          if (!charRegex.test(username)) {
+            alert("Username should contain only characters.");
+            return false;
+          }
+
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert("Enter a valid email address.");
+            return false;
+          }
+
+          // Mobile number validation (10 digits)
+          if (number.length !== 10 || isNaN(number)) {
+            alert("Mobile number should be 10 digits.");
+            return false;
+          }
+
+          // Password and confirm password validation
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+          }
+
+          // If all validations pass
+          return true;
+        }
+      </script>
+    </center>
+  </body>
+</html>
